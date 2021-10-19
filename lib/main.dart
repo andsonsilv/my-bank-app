@@ -8,12 +8,7 @@ class MyBankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Criando Transfêrencia'),
-        ),
-        body: FormularioTransferencia(),
-      ),
+      home: FormularioTransferencia(),
     );
   }
 }
@@ -21,7 +16,43 @@ class MyBankApp extends StatelessWidget {
 class FormularioTransferencia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Criando Transfêrencia'),
+      ),
+      body: Column(
+        children: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: TextField(
+              style: TextStyle(fontSize: 24),
+              decoration: InputDecoration(
+                icon: Icon(Icons.arrow_right_alt_sharp),
+                labelText: 'Numero da conta',
+                hintText: '0000',
+              ),
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: TextField(
+              style: TextStyle(fontSize: 24),
+              decoration: InputDecoration(
+                icon: Icon(Icons.monetization_on_outlined),
+                labelText: 'Valor',
+                hintText: '0,00',
+              ),
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          ElevatedButton(
+            onPressed: null,
+            child: const Text('Confirmar'),
+          ),
+        ],
+      ),
+    );
   }
 }
 
