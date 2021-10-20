@@ -8,7 +8,7 @@ class MyBankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: FormularioTransferencia(),
+      home: ListaTransferencias(),
     );
   }
 }
@@ -37,7 +37,7 @@ class FormularioTransferencia extends StatelessWidget {
               icone: Icons.monetization_on_outlined),
           ElevatedButton(
             onPressed: () {
-              _criaTransferencia();
+              _criaTransferencia(context);
             },
             child: Text('Confirmar'),
           ),
@@ -46,7 +46,7 @@ class FormularioTransferencia extends StatelessWidget {
     );
   }
 
-  void _criaTransferencia() {
+  void _criaTransferencia(BuildContext context) {
     final int numeroConta =
         int.tryParse(_controladorCampoNumeroConta.text) != null
             ? int.parse(_controladorCampoNumeroConta.text)
@@ -56,7 +56,9 @@ class FormularioTransferencia extends StatelessWidget {
         : -1;
     if (numeroConta != -1 && valor != -1.0) {
       final transferenciaCriada = Transferencia(numeroConta, valor);
+      debugPrint('Criando transferência');
       debugPrint('$transferenciaCriada');
+      Navigator.pop(context, transferenciaCriada);
     }
   }
 }
@@ -100,8 +102,17 @@ class ListaTransferencias extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Transferências'),
       ),
-      floatingActionButton:
-          FloatingActionButton(child: const Icon(Icons.add), onPressed: () {}),
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () {
+            final Future future = Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return FormularioTransferencia();
+            }));
+            future.then((transferenciaRecebida){
+              debugPrint('chegou no then do future');
+              debugPrint('$transferenciaRecebida');
+            });
+          }),
       body: Column(
         children: [
           ItemTransferencia(Transferencia(1234, 100.0)),
