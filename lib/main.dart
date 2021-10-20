@@ -15,7 +15,7 @@ class MyBankApp extends StatelessWidget {
 
 class FormularioTransferencia extends StatelessWidget {
   final TextEditingController _controladorCampoNumeroConta =
-      TextEditingController();
+  TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
 
   @override
@@ -48,12 +48,13 @@ class FormularioTransferencia extends StatelessWidget {
 
   void _criaTransferencia(BuildContext context) {
     final int numeroConta =
-        int.tryParse(_controladorCampoNumeroConta.text) != null
-            ? int.parse(_controladorCampoNumeroConta.text)
-            : -1;
+    int.tryParse(_controladorCampoNumeroConta.text) != null
+        ? int.parse(_controladorCampoNumeroConta.text)
+        : -1;
     final double valor = double.tryParse(_controladorCampoValor.text) != null
         ? double.parse(_controladorCampoValor.text)
         : -1;
+
     if (numeroConta != -1 && valor != -1.0) {
       final transferenciaCriada = Transferencia(numeroConta, valor);
       debugPrint('Criando transferência');
@@ -68,6 +69,11 @@ class Editor extends StatelessWidget {
   final String rotulo;
   final String dica;
   final IconData? icone;
+
+  Editor({required this.controlador,
+    required this.rotulo,
+    required this.dica,
+    this.icone});
 
   @override
   Widget build(BuildContext context) {
@@ -85,15 +91,11 @@ class Editor extends StatelessWidget {
       ),
     );
   }
-
-  Editor(
-      {required this.controlador,
-      required this.rotulo,
-      required this.dica,
-      this.icone});
 }
 
 class ListaTransferencias extends StatelessWidget {
+  final List<Transferencia> _transferencias = [];
+
   ListaTransferencias();
 
   @override
@@ -105,21 +107,24 @@ class ListaTransferencias extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
           onPressed: () {
-            final Future future = Navigator.push(context, MaterialPageRoute(builder: (context) {
+            final Future future =
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
               return FormularioTransferencia();
             }));
-            future.then((transferenciaRecebida){
+            future.then((transferenciaRecebida) {
               debugPrint('chegou no then do future');
               debugPrint('$transferenciaRecebida');
+              if(transferenciaRecebida != null){
+                _transferencias.add(transferenciaRecebida);
+              }
             });
           }),
-      body: Column(
-        children: [
-          ItemTransferencia(Transferencia(1234, 100.0)),
-          ItemTransferencia(Transferencia(5434, 300.0)),
-          ItemTransferencia(Transferencia(1222, 123.5)),
-          ItemTransferencia(Transferencia(1222, 10928.54)),
-        ],
+      body: ListView.builder(
+        itemCount: _transferencias.length,
+        itemBuilder: (context, indice){
+          final Transferencia transferencia = _transferencias[indice];
+          return ItemTransferencia(transferencia);
+        },
       ),
     );
   }
