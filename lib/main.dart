@@ -62,9 +62,9 @@ class FormularioTransferencia extends StatelessWidget {
 }
 
 class Editor extends StatelessWidget {
-  final TextEditingController? controlador;
-  final String? rotulo;
-  final String? dica;
+  final TextEditingController controlador;
+  final String rotulo;
+  final String dica;
   final IconData? icone;
 
   @override
@@ -84,7 +84,11 @@ class Editor extends StatelessWidget {
     );
   }
 
-  Editor({this.controlador, this.rotulo, this.dica, this.icone});
+  Editor(
+      {required this.controlador,
+      required this.rotulo,
+      required this.dica,
+      this.icone});
 }
 
 class ListaTransferencias extends StatelessWidget {
