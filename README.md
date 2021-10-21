@@ -1,16 +1,23 @@
-# bytebank
+# Mybank-app
 
-A new Flutter project.
+# Build configs:
 
-## Getting Started
+## Dart | Flutter
 
-This project is a starting point for a Flutter application.
+Flutter 2.6.0-11.0.pre • channel dev • https://github.com/flutter/flutter.git
 
-A few resources to get you started if this is your first Flutter project:
+Framework • revision 4b330ddbed • 2021-09-16 17:29:58 -0700
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Engine • revision 5b81c6d615
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Tools • Dart 2.15.0 (build 2.15.0-116.0.dev)
+
+# Habilidades concebidas
+- O que é Dart, Flutter e como funciona um projeto na prática;
+- Funcionamento Widget e como funciona a árvore de Widgets;
+- Layouts com Widgets do Material Design;
+- Implementação de layouts e classes;
+- Refatoração de código visando o framework Flutter;
+- Diferença entre StatelessWidget e StatefulWidget;
+- Correção de bugs comuns;
+- Estrutura e organização do projeto Flutter (referência: o artigo "Flutter: Code Organization", escrito por Conner Aldrich).
