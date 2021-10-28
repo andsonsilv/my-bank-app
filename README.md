@@ -1,8 +1,9 @@
 # mybank_app
+Minha primeira aplicação em Flutter. Consiste em criação de telas com Widgets e implementação de fluxo inicial de uma lista e formulário de cadastro.
 
-# Build configs:
+## Build configs:
 
-## Dart | Flutter
+### Dart | Flutter
 
 Flutter 2.6.0-11.0.pre • channel dev • https://github.com/flutter/flutter.git
 
@@ -12,7 +13,7 @@ Engine • revision 5b81c6d615
 
 Tools • Dart 2.15.0 (build 2.15.0-116.0.dev)
 
-# Habilidades concebidas
+## Habilidades concebidas
 - O que é Dart, Flutter e como funciona um projeto na prática;
 - Funcionamento Widget e como funciona a árvore de Widgets;
 - Layouts com Widgets do Material Design;
