@@ -1,4 +1,4 @@
-# Mybank-app
+# Mybank_app
 
 # Build configs:
 
